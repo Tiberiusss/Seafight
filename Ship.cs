@@ -107,6 +107,26 @@ namespace SeaFightProject
             }
         }
 
+        protected Ship(Point shipPosition, bool visible, Direction shipDirection, int scale)
+        {
+            InitializeShip();
+            ShipPosition = shipPosition;
+            ShipDirection = shipDirection;
+            Scale = scale;
+            ShipSize = ShipDirection == Direction.Horizontal ? new Size(Scale * ShipLength, Scale) : new Size(Scale, Scale * ShipLength);
+            Visible = visible;
+        }
+
+        protected Ship()
+        {
+            InitializeShip();
+            ShipPosition = new Point(0, 0);
+            ShipDirection = Direction.Horizontal;
+            Scale = 32;
+            ShipSize = ShipDirection == Direction.Horizontal ? new Size(Scale * ShipLength, Scale) : new Size(Scale, Scale * ShipLength);
+            Visible = true;
+        }
+
         protected abstract void InitializeShip();
     }
 }
